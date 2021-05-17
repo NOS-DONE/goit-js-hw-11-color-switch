@@ -20,6 +20,8 @@ function buttonStartHandler() {
 
   buttonStartRef.setAttribute('disabled', true);
   buttonStopRef.removeAttribute('disabled');
+  buttonStartRef.classList.add('scale', 'active');
+  buttonStopRef.classList.remove('scale','active')
 
   intervalId = setInterval(
     changeBodyColor, 1000
@@ -29,6 +31,9 @@ function buttonStartHandler() {
 function buttonStopHandler() {
   buttonStartRef.removeAttribute('disabled');
   buttonStopRef.setAttribute('disabled', true);
+  buttonStopRef.classList.add('scale','active');
+  buttonStartRef.classList.remove('scale', 'active')
+
   clearInterval(intervalId);
 }
 
