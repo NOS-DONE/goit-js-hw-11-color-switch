@@ -18,10 +18,7 @@ let intervalId = null;
 
 function buttonStartHandler() {
 
-  buttonStartRef.setAttribute('disabled', true);
-  buttonStopRef.removeAttribute('disabled');
-  buttonStartRef.classList.add('scale', 'active');
-  buttonStopRef.classList.remove('scale','active')
+  changeButtonClassAndAttribut(buttonStartRef, buttonStopRef );
 
   intervalId = setInterval(
     changeBodyColor, 1000
@@ -29,10 +26,8 @@ function buttonStartHandler() {
 }
 
 function buttonStopHandler() {
-  buttonStartRef.removeAttribute('disabled');
-  buttonStopRef.setAttribute('disabled', true);
-  buttonStopRef.classList.add('scale','active');
-  buttonStartRef.classList.remove('scale', 'active')
+
+  changeButtonClassAndAttribut(buttonStopRef, buttonStartRef);
 
   clearInterval(intervalId);
 }
@@ -49,4 +44,11 @@ function changeBodyColor() {
 function randomColor() {
   const colorIndex = randomIntegerFromInterval(0, colors.length - 1)
   return colors[colorIndex];
+}
+
+function changeButtonClassAndAttribut(firstButton, secondButton) {
+  secondButton.removeAttribute('disabled');
+  secondButton.classList.remove('active');
+  firstButton.setAttribute('disabled', true);
+  firstButton.classList.add('active');
 }
